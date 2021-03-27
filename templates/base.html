@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shared - partage tes créations !</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/reset.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/header.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/main.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/form.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/monprofil.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/info_img.css') }}" />
+  </head>
+  <body>
+    {% include 'header.html' %}
+    <div id="main">
+      {% block contenu %}
+      {% endblock %}
+    </div>
+    <script>function reserved(){alert('vous devez vous connecter');}</script>
+  </body>
+</html>

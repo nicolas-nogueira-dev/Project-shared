@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block contenu %}
+  <div class="form-box">
+    <form class="form" action="{{ url_for('connecting') }}" method="post">
+      <h2>Se connecter</h2>
+      <div class="name-section">
+        <input type="text" name="pseudo" autocomplete="off" maxlength="15" required />
+        <label for="pseudo" class="label-name">
+          <span class="content-name">Entrez votre pseudo</span>
+        </label>
+      </div>
+      <div class="name-section">
+        <input type="password" name="mdp" value="" required />
+        <label for="mdp" class="label-name">
+          <span class="content-name">Entrez votre mot de passe</span>
+        </label>
+      </div>
+      <input type="submit" value="Se connecter" />
+    </form>
+  </div>
+{% endblock %}

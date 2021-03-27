@@ -1,0 +1,16 @@
+<header>
+  <div id="in-header">
+    <a href="{{ url_for('accueil') }}" title="Lien retour vers l'accueil"><img id="logo-shared" src="{{ url_for('static', filename='icon/logo.png') }}" alt="logo SHARED" /></a>
+    {% if "pseudo" in session %}
+    <div id="header-case">
+      <a href="{{ url_for('ad_content') }}" title="Lien pour ajouter du contenu"><img src="{{ url_for('static', filename='icon/plus.png') }}" alt="logo plus" /></a>
+      <a href="{{ url_for('infos_moi') }}" title="Lien vers mes infos"><img src="{{ url_for('static', filename='icon/profil.png') }}" alt="logo profil" /></a>
+    </div>
+    {% else %}
+    <div id="header-case">
+      <a href="{{ url_for('connecting') }}" title="Lien pour se connecter">Se connecter</a>
+      <a href="{{ url_for('inscrip') }}" title="Lien pour se créer u ncompte">Créer un compte</a>
+    </div>
+    {% endif %}
+  </div>
+</header>

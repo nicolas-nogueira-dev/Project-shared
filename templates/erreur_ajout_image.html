@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block contenu %}
+  <div class="win">
+    {% if erreur == 1 %}
+      <p>ERREUR le nom du fichier n'a pas été validé</p>
+    {% else %}
+      <p>Le titre choisi est déjà pris</p>
+    {% endif %}
+    <a href="{{ url_for('accueil') }}" title="Lien pour retourner à l'accueil">Retour à l'accueil</a>
+  </div>
+{% endblock %}

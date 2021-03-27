@@ -1,0 +1,45 @@
+.commentaires {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.ajout-com {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ajout-com form {
+  display: flex;
+  flex-flow: row;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.commentaires .coms {
+  width: 100%;
+  margin-bottom: 2em;
+  border-radius: 2px;
+  box-shadow: 0 0 0px 2px #dcdcdc;
+}
+
+.commentaires .coms .com-content {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  border-bottom-style: solid;
+  border-bottom-color: #dcdcdc;
+  border-bottom-width: 2px;
+}
+
+.commentaires .coms .com-content .com-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

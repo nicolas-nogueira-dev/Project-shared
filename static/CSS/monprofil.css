@@ -1,0 +1,29 @@
+.monprofil {
+  margin-top: 1em;
+  width: 70%;
+  height: auto;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  outline: solid;
+  outline-color: #818181;
+  outline-width: 2px;
+}
+
+.monprofil ul {
+  list-style: none;
+}
+
+.monprofil ul li {
+  padding: 1em;
+}
+
+.monprofil ul li a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.monprofil ul li a:hover {
+  color: #5fa8d3;
+  transition: all 0.2s ease;
+}

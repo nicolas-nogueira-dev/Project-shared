@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block contenu %}
+<div class="form-box">
+  <form class="form" action="{{ url_for('ad_content') }}" method="POST" enctype="multipart/form-data">
+    <h2>Ajouter une image</h2>
+    <div class="name-section">
+      <input type="text" name="titre" autocomplete="off"  maxlength="50" required />
+      <label for="titre" class="label-name">
+      <span class="content-name">Entrez le titre de l'image</span>
+    </label>
+    </div>
+    <input type="file" name="fichier" required />
+    <input type="submit" value="ENVOYER" />
+  </form>
+</div>
+{% endblock %}

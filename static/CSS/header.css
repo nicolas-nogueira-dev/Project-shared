@@ -1,0 +1,77 @@
+
+@media screen and (min-width: 886px) {
+  header {
+    height: 8em;
+  }
+
+  header #in-header #header-case {
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  header #in-header #header-case a {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 886px) {
+  header {
+    height: 3em;
+  }
+
+  header #in-header #header-case a img {
+    height: 40px;
+  }
+
+  header #in-header #header-case {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  header #in-header #header-case a {
+    font-size: 10px;
+  }
+}
+
+header {
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  background: rgb(255,255,255);
+  background: linear-gradient(0deg, rgba(255,255,255,0.67) 0%, rgba(255,255,255,0.7) 40%, rgba(255,255,255,1) 100%);
+  font-weight: bold;
+  box-shadow: 0 0 0px 2px #dcdcdc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+header #in-header {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header #in-header a {
+  height: 80%;
+  width: auto;
+}
+
+header #in-header a #logo-shared{
+  height: 100%;
+  width: auto;
+
+}
+
+header #in-header #header-case a {
+  text-decoration: none;
+  font-weight: bold;
+}

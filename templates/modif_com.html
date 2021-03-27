@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block contenu %}
+<div class="modif-com_box">
+  <h2 class="titre-section">Modification d'un commentaire</h2>
+  <form class="form" action="{{ url_for('change_com') }}" method="POST"">
+    <div class="name-section">
+      <input type="text" name="contenu" autocomplete="off" maxlength="250" required/>
+      <label for="contenu" class="label-name">
+      <span class="content-name">Entrez votre commentaire</span>
+    </label>
+    </div>
+    <input type="text" name="id" value="{{ id }}" hidden />
+    <input type="submit" value="ENVOYER" />
+  </form>
+</div>
+{% endblock %}

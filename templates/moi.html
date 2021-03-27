@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block contenu %}
+  <div class="monprofil">
+    <ul>
+      <li><a href="{{ url_for('infos_profil') }}?pseudo={{ session['pseudo'] }}" title="Lien vers mon profil">Voir mon profil</a>
+      <li><a href="{{ url_for('deconnexion') }}" title="Lien de déconnexion">Se déconnecter</a></li>
+    </ul>
+  </div>
+{% endblock %}

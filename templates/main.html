@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block contenu %}
+  <div class="actu">
+    {% if "pseudo" in session %}
+      <h2 class="titre-section">Notre sélection juste pour vous !</h2>
+      {% if list_img == [] or list_img == () %}
+      <h4>Aucune publication ¯\_(ツ)_/¯</h4>
+      {% endif %}
+      {% for i in list_img %}
+      <div class="box-post">
+        <div class="post-header">
+          <h2>Créateur : <a href="{{ url_for('infos_profil') }}?pseudo={{ i['auteur'] }}" title="Lien vers la page du créateur">{{ i["auteur"] }}</a></h2>
+          <h2>Titre : {{ i["nom_image"] }}</h2>
+          <p>{{ i["date"].strftime('le %d/%m/%Y à %H:%M:%S') }}</p>
+        </div>
+        <div class="post-img-case">
+          <a href="{{ url_for('infos_image') }}?id={{ i['id'] }}&nom_img={{ i['nom_image'] }}" title="Lien vers les infos de l'image"><img src="{{ url_for('affiche_image', nom_image=i['nom_fichier']) }}" alt="Image de {{i['auteur']}}" /></a>
+        </div>
+        <div class="post-footer">
+          <div class="likes">
+            {% if savoir_si_like(session["pseudo"],i["nom_image"],i["nom_fichier"]) %}
+            <a href="{{ url_for('rem_like') }}?a={{ session['pseudo'] }}&b={{ i['nom_image'] }}&c={{ i['nom_fichier'] }}" title="Lien pour dislike"><img src="{{ url_for('static', filename='icon/coeur_plein.png') }}" alt="Coeur vide" /></a>
+            {% else %}
+            <a href="{{ url_for('ad_like') }}?a={{ session['pseudo'] }}&b={{ i['nom_image'] }}&c={{ i['nom_fichier'] }}" title="Lien pour like"><img src="{{ url_for('static', filename='icon/coeur_vide.png') }}" alt="Coeur vide" /></a>
+            {% endif %}
+            <p>{{ nb_like(i["nom_image"]) }} likes</p>
+          </div>
+          {% if session["pseudo"] == i["auteur"] %}
+          <a href="{{ url_for('rem_image') }}?id={{ i['id'] }}" title="Lien pour suprimer l'image" class="supr">suprimer</a>
+          {% endif %}
+          <a href="{{ url_for('infos_image') }}?id={{ i['id'] }}&nom_img={{ i['nom_image'] }}" title="Lien vers les détails de l'image"><img src="{{ url_for('static', filename='icon/comment.png') }}" alt="Voir les commentaires" /></a>
+        </div>
+      </div>
+      {% endfor %}
+      <h2 class="titre-section">Le top</h2>
+      {% if list_img_top == [] or list_img_top == () %}
+      <h4>Aucune publication ¯\_(ツ)_/¯</h4>
+      {% endif %}
+      {% for i in list_img_top %}
+      <div class="box-post">
+        <div class="post-header">
+          <h2>Créateur : <a href="{{ url_for('infos_profil') }}?pseudo={{ i['auteur'] }}" title="Lien vers la page du créateur">{{ i["auteur"] }}</a></h2>
+          <h2>Titre : {{ i["nom_image"] }}</h2>
+          <p>{{ i["date"].strftime('le %d/%m/%Y à %H:%M:%S') }}</p>
+        </div>
+        <div class="post-img-case">
+          <a href="{{ url_for('infos_image') }}?id={{ i['id'] }}&nom_img={{ i['nom_image'] }}" title="Lien vers la page des détails de l'image"><img src="{{ url_for('affiche_image', nom_image=i['nom_fichier']) }}" alt="Image de {{i['auteur']}}" /></a>
+        </div>
+        <div class="post-footer">
+          <div class="likes">
+            {% if savoir_si_like(session["pseudo"],i["nom_image"],i["nom_fichier"]) %}
+            <a href="{{ url_for('rem_like') }}?a={{ session['pseudo'] }}&b={{ i['nom_image'] }}&c={{ i['nom_fichier'] }}" title="Lien pour dislike"><img src="{{ url_for('static', filename='icon/coeur_plein.png') }}" alt="Coeur vide" /></a>
+            {% else %}
+            <a href="{{ url_for('ad_like') }}?a={{ session['pseudo'] }}&b={{ i['nom_image'] }}&c={{ i['nom_fichier'] }}" title="Lien pour like"><img src="{{ url_for('static', filename='icon/coeur_vide.png') }}" alt="Coeur vide" /></a>
+            {% endif %}
+            <p>{{ nb_like(i["nom_image"]) }} likes</p>
+          </div>
+          {% if session["pseudo"] == i["auteur"] %}
+          <a href="{{ url_for('rem_image') }}?id={{ i['id'] }}" title="Lien pour suprimer l'image" class="supr">suprimer</a>
+          {% endif %}
+          <a href="{{ url_for('infos_image') }}?id={{ i['id'] }}&nom_img={{ i['nom_image'] }}" title="Lien vers les détails de l'image"><img src="{{ url_for('static', filename='icon/comment.png') }}" alt="Voir les commentaires" /></a>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <h2 class="titre-section">Notre sélection du moment !</h2>
+      {% if list_img == [] or list_img == () %}
+      <h4>Aucune publication ¯\_(ツ)_/¯</h4>
+      {% endif %}
+      {% for i in list_img %}
+      <div class="box-post">
+        <div class="post-header">
+          <h2>Créateur : <a href="{{ url_for('infos_profil') }}?pseudo={{ i['auteur'] }}" title="Lien vers la page du créateur">{{ i["auteur"] }}</a></h2>
+          <h2>Titre : {{ i["nom_image"] }}</h2>
+          <p>{{ i["date"].strftime('le %d/%m/%Y à %H:%M:%S') }}</p>
+        </div>
+        <div class="post-img-case">
+          <a href="{{ url_for('infos_image') }}?id={{ i['id'] }}&nom_img={{ i['nom_image'] }}" title="Lien vers les détails"><img src="{{ url_for('affiche_image', nom_image=i['nom_fichier']) }}" alt="Image de {{i['auteur']}}" /></a>
+        </div>
+        <div class="post-footer">
+          <div class="likes">
+            <a href="javascript:void(0);"  onclick='reserved()' title="Lien pour like"><img src="{{ url_for('static', filename='icon/coeur_vide.png') }}" alt="Coeur vide" /></a>
+            <p>{{ nb_like(i["nom_image"]) }} likes</p>
+          </div>
+          <a href="javascript:void(0);"  onclick='reserved()' title="Lien pour voir les commentaires"><img src="{{ url_for('static', filename='icon/comment.png') }}" alt="Voir les commentaires"></a>
+        </div>
+      </div>
+      {% endfor %}
+      <h2 class="titre-section">Le top</h2>
+      {% if list_img_top == [] or list_img_top == () %}
+      <h4>Aucune publication ¯\_(ツ)_/¯</h4>
+      {% endif %}
+      {% for i in list_img_top %}
+      <div class="box-post">
+        <div class="post-header">
+          <h2>Créateur : <a href="{{ url_for('infos_profil') }}?pseudo={{ i['auteur'] }}" title="Lien vers la page du créateur">{{ i["auteur"] }}</a></h2>
+          <h2>Titre : {{ i["nom_image"] }}</h2>
+          <p>{{ i["date"].strftime('le %d/%m/%Y à %H:%M:%S') }}</p>
+        </div>
+        <div class="post-img-case">
+          <a href="{{ url_for('infos_image') }}?id={{ i['id'] }}&nom_img={{ i['nom_image'] }}" title="Lien vers les infos de l'image"><img src="{{ url_for('affiche_image', nom_image=i['nom_fichier']) }}" alt="Image de {{i['auteur']}}" /></a>
+        </div>
+        <div class="post-footer">
+          <div class="likes">
+            <a href="javascript:void(0);"  onclick='reserved()' title="Lien pour like"><img src="{{ url_for('static', filename='icon/coeur_vide.png') }}" alt="Coeur vide" /></a>
+            <p>{{ nb_like(i["nom_image"]) }} likes</p>
+          </div>
+          <a href="javascript:void(0);"  onclick='reserved()' title="Lien pour voir les commentaires"><img src="{{ url_for('static', filename='icon/comment.png') }}" alt="Voir les commentaires" /></a>
+        </div>
+      </div>
+      {% endfor %}
+    {% endif %}
+    <a href="{{ url_for('all_image') }}" title="Lien pour voirs toutes les images" class="titre-section">Voir toute les images</a>
+  </div>
+{% endblock %}
